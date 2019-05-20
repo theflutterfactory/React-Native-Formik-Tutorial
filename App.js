@@ -4,27 +4,22 @@ import {
   View,
   TextInput
 } from 'react-native';
+import { withFormik } from 'formik';
 
 
-export default class App extends Component {
-
-  state = {
-    email: '',
-    password: ''
-  }
-
+class App extends Component {
   render() {
     return (
       <View style={styles.container}>
         <TextInput
           style={styles.formInput}
-          onChangeText={email => this.setState({ email })}
+          onChangeText={email => { }}
           placeholder='email'
         />
         <TextInput
           style={styles.formInput}
           secureTextEntry={true}
-          onChangeText={password => this.setState({ password })}
+          onChangeText={password => { }}
           placeholder='password'
         />
       </View>
@@ -52,3 +47,7 @@ const styles = StyleSheet.create({
     padding: 8
   }
 });
+
+export default withFormik({
+  mapPropsToValues: () => ({ email: '', password: '' })
+})(App);
